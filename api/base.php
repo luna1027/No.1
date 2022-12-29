@@ -6,7 +6,7 @@ date_default_timezone_set("Asia/Taipei");
 $Title = new DB('title');
 $Bottom = new DB('bottom');
 $Total = new DB('total');
-
+$Ad = new DB('ad');
 class DB
 {
     protected $dsn = "mysql:host=localhost;charset=utf8;dbname=db19";
