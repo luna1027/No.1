@@ -32,6 +32,8 @@ body
 	bottom:0px;
 	margin:auto;
 	overflow:auto;
+	
+		text-align: center;
 }
 #main
 {

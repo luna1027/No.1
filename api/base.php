@@ -2,6 +2,11 @@
 session_start();
 date_default_timezone_set("Asia/Taipei");
 
+// 
+$Title = new DB('title');
+$Bottom = new DB('bottom');
+$Total = new DB('total');
+
 class DB
 {
     protected $dsn = "mysql:host=localhost;charset=utf8;dbname=db19";
@@ -67,7 +72,10 @@ class DB
         } else {
             // Insert
             $keys = array_keys($save);
-            $sql = "INSERT INTO `$this->table` (`" . join("`", $keys) . "`) VALUES ('" . join("'", $save) . "')";
+            prr($keys);
+            prr($this->arrayToSqlArray($save));
+            $sql = "INSERT INTO `$this->table` (`" . join("`,`", $keys) . "`) VALUES ('" . join("','", $save) . "')";
+            echo $sql;
         }
         return $this->pdo->query($sql);
     }
@@ -175,6 +183,3 @@ function q($sql)
     $pdo = new PDO($dsn, 'root', '');
     $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }
-
-// $db = new DB('bottom');
-// $bot = $db->all();
