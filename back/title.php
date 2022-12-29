@@ -12,7 +12,6 @@
                     <td width="23%">替代文字</td>
                     <td width="7%">顯示</td>
                     <td width="7%">刪除</td>
-                    <td></td>
                 </tr>
                 <?php
                 $rows = $Title->all();

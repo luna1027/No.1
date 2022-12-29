@@ -8,7 +8,6 @@
                     <td width="86%">動態文字廣告</td>
                     <td width="7%">顯示</td>
                     <td width="7%">刪除</td>
-                    <td></td>
                 </tr>
                 <?php
                 $rows = $Ad->all();
@@ -16,7 +15,7 @@
                     $checked = $row['sh'] == 1 ? 'checked' : '';
                 ?>
                     <tr class="">
-                        <td width="86%"><input type="text" name="text[]" value="<?= $row['text']; ?>" style="width:655px;"></td>
+                        <td width="86%"><input type="text" name="text[]" value="<?= $row['text']; ?>" style="width:97%;"></td>
                         <td width="7%"><input type="checkbox" name="sh[]" value="<?= $row['id']; ?>" <?= $checked ?>></td>
                         <td width="7%"><input type="checkbox" name="del[]" value="<?= $row['id']; ?>"></td>
                         <input type="hidden" name="id[]" value="<?= $row['id']; ?>">
