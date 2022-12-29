@@ -125,6 +125,7 @@ body {
 
 .cent {
 	text-align: center;
+	/* object-fit: cover; */
 }
 
 input,

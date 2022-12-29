@@ -4,9 +4,14 @@ date_default_timezone_set("Asia/Taipei");
 
 // 
 $Title = new DB('title');
+$Ad = new DB('ad');
+$Mvim = new DB('mvim');
+$Image = new DB('image');
 $Bottom = new DB('bottom');
 $Total = new DB('total');
-$Ad = new DB('ad');
+$News = new DB('news');
+$Admin = new DB('admin');
+$Menu = new DB('menu');
 class DB
 {
     protected $dsn = "mysql:host=localhost;charset=utf8;dbname=db19";
