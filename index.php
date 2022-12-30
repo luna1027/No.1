@@ -31,7 +31,17 @@ include_once "./api/base.php";
 			<div id="lf" style="float:left;">
 				<div id="menuput" class="dbor">
 					<!--主選單放此-->
-					<span class="t botli">主選單區</span>
+					<span class="t botli"> 主選單區 </span>
+					<?php
+					$rows = $Menu->all(['parent' => 0]);
+					foreach ($rows as $row) {
+					?>
+						<a style="color:#000; font-size:13px; text-decoration:none;" href="<?= $row['href'] ?>">
+							<div class="mainmu cent"> <?= $row['name'] ?></div>
+						</a>
+					<?php
+					}
+					?>
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
 					<span class="t">進站總人數 : <?= $Total->find(1)['text']; ?> </span>
@@ -65,8 +75,33 @@ include_once "./api/base.php";
 			<div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
 				<!--右邊-->
 				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo('?do=admin')">管理登入</button>
-				<div style="width:89%; height:480px;" class="dbor">
-					<span class="t botli">校園映象區</span>
+				<div style="width:89%; height:480px;" class="dbor cent">
+					<span class="t botli" style="margin-bottom:20px;">校園映象區</span>
+					<a class="bl" style="width:100px;font-size:30px;" href=""><img src="./icon/01E01.jpg" alt=""></a>
+					<ul class="ssaa" style="list-style-type:decimal; padding-left:0;">
+						<?php
+						$num = 3;
+						$length = $Image->count('*', 1);
+						// echo $length;
+						$pages = ceil($length / $num);
+						// echo $pages;
+						$page = $_GET['p'] ?? 1;
+						// echo $page;
+						$start = ($page - 1) * $num;
+						$lastPage = $page - 1 < 1 ? 1 : $page - 1;
+						$nextPage = $page + 1 > $pages ? $pages : $page + 1;
+						$rows = $Image->all(['sh' => 1], ' LIMIT ' . $start . ',' . $num);
+						// prr($rows);
+						foreach ($rows as $row) {
+						?>
+							<li class="imm">
+								<img class="ti" src="./upload/<?= $row['img']; ?>" style="width: 150px; height:103px;"></img>
+							</li>
+						<?php
+						}
+						?>
+					</ul>
+					<a class="bl" style="font-size:30px;" href=""><img src="./icon/01E02.jpg" alt=""></a>
 					<script>
 						var nowpage = 0,
 							num = 0;

@@ -27,7 +27,7 @@
                     $checked = $row['sh'] == 1 ? 'checked' : '';
                 ?>
                     <tr>
-                        <td class="cent"><img src="./upload/<?= $row['img']; ?>" style="width:300px;height:100px;object-fit: contain;"></td>
+                        <td class="cent"><img src="./upload/<?= $row['img']; ?>" style="width:100px;height:68px;object-fit: contain;"></td>
                         <td class="cent"><input type="checkbox" name="sh[]" value="<?= $row['id']; ?>" <?= $checked; ?>></td>
                         <td class="cent"><input type="checkbox" name="del[]" value="<?= $row['id']; ?>"></td>
                         <td class="cent">

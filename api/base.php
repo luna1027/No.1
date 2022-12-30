@@ -189,3 +189,10 @@ function q($sql)
     $pdo = new PDO($dsn, 'root', '');
     $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }
+
+if (!isset($_SESSION['visit'])) {
+    $_SESSION['visit'] = 1;
+    $total = $Total->find(1);
+    $total['text']++;
+    $Total->save($total);
+}

@@ -165,6 +165,14 @@ button:focus {
 	color: #0CF;
 	cursor: pointer;
 	text-decoration: none;
-	
 }
 
+.all {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.imm{
+	list-style: none;
+}
