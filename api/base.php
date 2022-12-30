@@ -2,7 +2,7 @@
 session_start();
 date_default_timezone_set("Asia/Taipei");
 
-// 
+// 資料庫們 //
 $Title = new DB('title');
 $Ad = new DB('ad');
 $Mvim = new DB('mvim');
@@ -12,6 +12,7 @@ $Total = new DB('total');
 $News = new DB('news');
 $Admin = new DB('admin');
 $Menu = new DB('menu');
+
 class DB
 {
     protected $dsn = "mysql:host=localhost;charset=utf8;dbname=db19";
@@ -143,7 +144,7 @@ class DB
             }
         }
 
-        echo $sql;
+        // echo $sql;
         return $this->pdo->query($sql)->fetchColumn();
     }
 

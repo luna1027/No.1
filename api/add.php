@@ -17,6 +17,12 @@ switch ($table) {
         }
         break;
     case 'Menu':
+        if (!empty($_POST['name']) && !empty($_POST['href'])) {
+            $data['name'] = $_POST['name'];
+            $data['href'] = $_POST['href'];
+            $data['sh'] = 1;
+            $data['parent'] = 0;
+        }
         break;
     default:
         if (isset($_POST['text'])) {

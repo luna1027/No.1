@@ -9,32 +9,40 @@ if (isset($_POST['id'])) {
     foreach ($_POST['id'] as $idx => $id) {
         if (isset($_POST['del']) && in_array($id, $_POST['del'])) {
             $$table->del(['id' => $id]);
+            if ($table == 'Menu') {
+                $Menu->del(['parent' => $id]);
+            }
         } else {
+            $row = $$table->find($id);
+
             switch ($table) {
                 case 'Admin':
                     if (!empty($_POST['acc'][$idx]) && !empty($_POST['pw'][$idx])) {
-                        $$table->save(['acc' => $_POST['acc'][$idx], 'pw' => $_POST['pw'][$idx], 'id' => $_POST['id'][$idx]]);
+                        $row['acc'] = $_POST['acc'][$idx];
+                        $row['pw'] = $_POST['pw'][$idx];
                     }
                     break;
+
                 case 'Menu':
-
+                    $row['name'] = $_POST['name'][$idx];
+                    $row['href'] = $_POST['href'][$idx];
+                    $row['sh'] = isset($_POST['sh']) && in_array($id, $_POST['sh']) ? 1 : 0;
                     break;
-                default:
-                    $sh = in_array($id, $_POST['sh']) ? 1 : 0;
-                    if (isset($_POST['text'])) {
-                        $text = $_POST['text'][$idx];
-                        $$table->save(['text' => $text, 'sh' => $sh, 'id' => $id]);
-                    } else {
-                        $$table->save(['sh' => $sh, 'id' => $id]);
-                    }
 
+                default:
+                    if (isset($_POST['text'])) {
+                        $row['text'] = $_POST['text'][$idx];
+                    }
+                    $row['sh'] = isset($_POST['sh']) && in_array($id, $_POST['sh']) ? 1 : 0;
                     break;
             }
+            $$table->save($row);
         }
     }
 } else {
     to("../admin.php?do=" . lcfirst($table));
 }
+
 // 多的 => 考試可以不用寫 :D //
 if ($table == 'Title') {
     if (!empty($$table->all(['sh' => 0])) && empty($$table->find(['sh' => 1]))) {

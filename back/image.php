@@ -11,7 +11,18 @@
                     <td></td>
                 </tr>
                 <?php
-                $rows = $Image->all();
+                $num = 3;
+                $length = $Image->count('*', 1);
+                // echo $length;
+                $pages = ceil($length / $num);
+                // echo $pages;
+                $page = $_GET['p'] ?? 1;
+                // echo $page;
+                $start = ($page - 1) * $num;
+                $lastPage = $page - 1 < 1 ? 1 : $page - 1;
+                $nextPage = $page + 1 > $pages ? $pages : $page + 1;
+                $rows = $Image->all(' LIMIT ' . $start . ',' . $num);
+                // prr($rows);
                 foreach ($rows as $row) {
                     $checked = $row['sh'] == 1 ? 'checked' : '';
                 ?>
@@ -27,8 +38,21 @@
                 <?php
                 }
                 ?>
+
             </tbody>
         </table>
+        <div style="text-align:center;">
+            <a class="bl" style="font-size:15px;" href="?do=image&p=<?= $lastPage; ?>">&lt;&nbsp;</a>
+            <?php
+            for ($i = 1; $i <= $pages; $i++) {
+                $fontSize = ($i == $page) ? "font-size:25px;" : "font-size:20px;";
+            ?>
+                <a class="bl" style="<?= $fontSize; ?>" href="?do=image&p=<?= $i; ?>"><?= $i; ?></a>
+            <?php
+            }
+            ?>
+            <a class="bl" style="font-size:15px;" href="?do=image&p=<?= $nextPage; ?>">&nbsp;&gt;</a>
+        </div>
         <table style="margin-top:40px; width:70%;">
             <tbody>
                 <tr>

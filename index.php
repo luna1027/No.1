@@ -23,8 +23,8 @@ include_once "./api/base.php";
 		</div>
 	</div>
 	<div id="main">
-		<a title="" href="index.php">
-			<div class="ti" style="background:url('use/'); background-size:cover;"></div>
+		<a title="<?= $Title->find(['sh' => 1])['text']; ?>" href="index.php">
+			<div class="ti" style="background:url('upload/<?= $Title->find(['sh' => 1])['img']; ?>'); background-size:cover;"></div>
 			<!--標題-->
 		</a>
 		<div id="ms">
@@ -34,7 +34,7 @@ include_once "./api/base.php";
 					<span class="t botli">主選單區</span>
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
-					<span class="t">進站總人數 : <?= $Total->find(1)['total']; ?> </span>
+					<span class="t">進站總人數 : <?= $Total->find(1)['text']; ?> </span>
 				</div>
 			</div>
 			<?php
@@ -92,7 +92,7 @@ include_once "./api/base.php";
 		</div>
 		<div style="clear:both;"></div>
 		<div style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
-			<span class="t" style="line-height:123px;"> <?= $Bottom->find(1)['bottom']; ?> </span>
+			<span class="t" style="line-height:123px;"> <?= $Bottom->find(1)['text']; ?> </span>
 		</div>
 	</div>
 
