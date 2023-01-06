@@ -29,5 +29,5 @@
         <input type="button" class="addSubMenu" value="更多次選單">
     </div>
 </form>
-<script src="../js/jquery-1.9.1.min.js"></script>
-<script src="../js/js.js"></script>
+<script src="./js/jquery-1.9.1.min.js"></script>
+<script src="./js/js.js"></script>

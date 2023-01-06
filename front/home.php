@@ -24,7 +24,7 @@
             // if (!empty($rows)) {
             //     $mvim = "<embed loop=true src='../upload/{$rows[0]['img']}' style='width:99%; height:100%;'></embed>";
             foreach ($rows as $row) {
-                echo "lin.push('../upload/{$row['img']}');";
+                echo "lin.push('./upload/{$row['img']}');";
             }
             // } else {
             //     $mvim = "沒有資料";
